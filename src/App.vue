@@ -1,11 +1,16 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h1>This is a test For Shaebae's website!!!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div id="app">
+    <h1>This is a test For Shaebae's website!!!</h1>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+#app {
+  background-image: url('/pink-background.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+</style>

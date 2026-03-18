@@ -2,6 +2,10 @@
 
 Currently in progress...
 
+## Development considerations
+
+Given that the server automatically pulls from any new builds, it's advised to save to github (create a backup) before running npm run build.
+
 # Vue notes, and dev & build commands
 
 ## Type Support for `.vue` Imports in TS

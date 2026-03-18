@@ -1,16 +1,26 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Header from '@/Components/Header.vue';
+
+</script>
 
 <template>
-  <div id="app">
-    <h1>This is a test For Shaebae's website!!!</h1>
+  <div id="feed_container">
+    <Header/>
+    <h1>This is a test for Shaebae's website!!!</h1>
   </div>
 </template>
 
 <style scoped>
-#app {
-  background-image: url('/pink-background.jpg');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
+#feed_container {
+  background-color: white;
+  margin: 10% auto;
+  max-width: 50vw;
+  min-height: 50vh;
+  border-radius: 3em;
+  text-align: center;
 }
+
+::-webkit-scrollbar {
+    display: none;
+  }
 </style>

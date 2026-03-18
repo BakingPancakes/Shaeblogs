@@ -1,0 +1,5 @@
+body {
+  background-image: url('/pink-background.jpg');
+  overscroll-behavior-y: none;
+  margin: 0;
+}

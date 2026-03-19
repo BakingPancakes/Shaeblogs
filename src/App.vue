@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script startup setup lang="ts">
 import Header from '@/Components/Header.vue';
 
 </script>

@@ -6,6 +6,13 @@ Currently in progress...
 
 Given that the server automatically pulls from any new builds, it's advised to save to github (create a backup) before running npm run build.
 
+## Todos
+
+- Set up expressjs server
+- Configure prettier + figure out how it works
+- Set up PostgreSQL with Prism
+- Set up Lucia Auths
+
 # Vue notes, and dev & build commands
 
 ## Type Support for `.vue` Imports in TS

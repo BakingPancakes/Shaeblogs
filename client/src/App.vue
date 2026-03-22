@@ -1,12 +1,13 @@
 <script startup setup lang="ts">
-import Header from '@/Components/Header.vue';
-
+import Header from "@/Components/Header.vue";
+import AsyncTest from "./Components/AsyncTest.vue";
 </script>
 
 <template>
   <div id="feed_container">
-    <Header/>
-    <h1>This is a test for Shaebae's website!!!</h1>
+    <Header />
+    <h1>This is a for Shaebae's website!!!</h1>
+    <AsyncTest />
   </div>
 </template>
 
@@ -21,6 +22,6 @@ import Header from '@/Components/Header.vue';
 }
 
 ::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
 </style>

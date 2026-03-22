@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Tab from "@/Components/Tab.vue";
-
 const tab_list = ["tab"];
 </script>
 

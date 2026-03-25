@@ -4,9 +4,9 @@ import AsyncTest from "./Components/AsyncTest.vue";
 </script>
 
 <template>
+  <Header />
   <div id="feed_container">
-    <Header />
-    <h1>This is a for Shaebae's website!!!</h1>
+    <h1>This is a test for Shaebae's website!!!</h1>
     <AsyncTest />
   </div>
 </template>
@@ -19,9 +19,5 @@ import AsyncTest from "./Components/AsyncTest.vue";
   min-height: 50vh;
   border-radius: 3em;
   text-align: center;
-}
-
-::-webkit-scrollbar {
-  display: none;
 }
 </style>

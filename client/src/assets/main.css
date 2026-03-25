@@ -1,5 +1,10 @@
 body {
-  background-image: url('/pink-background.jpg');
-  overscroll-behavior-y: none;
+  background-image: url("/pink_checkered_background.jpg");
+  overscroll-behavior: none;
   margin: 0;
+}
+
+/* remove scroll bar TODO: custom scroll bar? */
+::-webkit-scrollbar {
+  display: none;
 }

@@ -7,3 +7,7 @@ Start the server:
 ```bash
 npm run dev
 ```
+
+# TODO:
+
+- Set up supabase to work with prisma

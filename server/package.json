@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "author": "BaconPancakes",
-  "type": "commonjs",
+  "type": "module",
   "main": "main.js",
   "private": true,
   "scripts": {
@@ -16,13 +16,18 @@
     "ext": "ts"
   },
   "dependencies": {
-    "dotenv": "^17.3.1",
-    "express": "^5.2.1"
+    "@prisma/adapter-pg": "^7.5.0",
+    "@prisma/client": "^7.5.0",
+    "express": "^5.2.1",
+    "pg": "^8.20.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.5.0",
+    "@types/pg": "^8.20.0",
+    "dotenv": "^17.3.1",
     "nodemon": "^3.1.14",
+    "prisma": "^6.19.2",
     "typescript": "^5.9.3"
   }
 }

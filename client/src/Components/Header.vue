@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { THEME } from "@/constants";
+
 type tabList = {
   tag: string;
   imageURL?: string;
 };
 const tab_list: tabList[] = [
+  {
+    tag: "More to come...",
+  },
   {
     tag: "Sips",
     imageURL: "/iced-coffee-icon.png",
@@ -11,9 +16,6 @@ const tab_list: tabList[] = [
   {
     tag: "Flics",
     imageURL: "/digicam-icon.png",
-  },
-  {
-    tag: "More to come...",
   },
 ];
 </script>
@@ -31,7 +33,7 @@ const tab_list: tabList[] = [
   </div>
 </template>
 
-<style>
+<style scoped>
 #header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -39,7 +41,7 @@ const tab_list: tabList[] = [
   align-items: center;
   margin: 0;
   height: 5em;
-  background-color: #ffc9c9;
+  background-color: v-bind("THEME.PRIMARY_1");
 }
 
 #tablist {

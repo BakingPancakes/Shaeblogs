@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const apiURL = __API_PATH__;
-
 const message = ref("");
 
 const fetchAPI = async () => {
   try {
-    const res = await fetch(apiURL);
+    const res = await fetch(__API_PATH__);
 
     const data = await res.json();
 

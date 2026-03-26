@@ -1,0 +1,6 @@
+export const THEME = {
+  PRIMARY_1: "#FFC9C9",
+  PRIMIARY_2: "#D0F6FC",
+  SECONDARY_1: "#9AB297",
+  SECONDARY_2: "#FFFFFF",
+};

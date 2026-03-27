@@ -8,10 +8,10 @@ Given that the server automatically pulls from any new builds, it's advised to s
 
 ## Todos
 
-- Set up expressjs server
 - Configure prettier + figure out how it works
 - Set up PostgreSQL with Prism
 - Set up Lucia Auths
+- set up huksy + lint-staged to block un-linted commits
 
 # Vue notes, and dev & build commands
 

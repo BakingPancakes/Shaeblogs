@@ -5,17 +5,21 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  // prisma-client is unstable in v 6, so using an older provider
+  provider = "prisma-client-js"
+  output   = "../dist/generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  // no longer supported as of prisma 7
+  // url       = env("DATABASE_URL")
+  // directUrl = env("DIRECT_URL")
 }
 
 model article {
   id Int @id
+  page String
   title String @unique
   thumbnail String?
   date Int

@@ -4,18 +4,22 @@ import { THEME } from "@/constants";
 type tabList = {
   tag: string;
   imageURL?: string;
+  id: number;
 };
 const tab_list: tabList[] = [
   {
     tag: "More to come...",
+    id: 1,
   },
   {
     tag: "Sips",
     imageURL: "/iced-coffee-icon.png",
+    id: 2,
   },
   {
     tag: "Flics",
     imageURL: "/digicam-icon.png",
+    id: 3,
   },
 ];
 </script>
@@ -23,7 +27,7 @@ const tab_list: tabList[] = [
 <template>
   <div id="header">
     <div id="tablist">
-      <div id="tab" v-for="tab in tab_list">
+      <div id="tab" v-for="tab in tab_list" :key="tab.id">
         <img :src="tab.imageURL" style="max-height: 1em" />
         <p>{{ tab.tag }}</p>
       </div>

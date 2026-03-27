@@ -1,4 +1,6 @@
 import express from "express";
+// import { ArticleData } from "../../client/types";
+import { getArticleSummary } from "./prismaCalls.js";
 
 const PORT = process.env.API_PORT || 3001;
 
@@ -12,16 +14,15 @@ app.get("/api", (_req, res) => {
   res.status(200).json({ message: "If you see this, the server is up!" });
 });
 
-app.get("/api/articles", (req, res) => {
+app.get("/api/articles", async (req, res) => {
   try {
     const requestType = req.query.requestType;
-    // const pageName = req.query.pageName;
-    if (requestType === "preview") {
+    const pageName = req.query.pageName;
+    if (requestType === "preview" && typeof pageName === "string") {
       // make database request with pageName
+      const pageArticles = await getArticleSummary(pageName);
       res.status(200).json({
-        title: "Test Title.",
-        thumbnail: "Fake picture",
-        summary: "blah blah blah",
+        test: pageArticles,
       });
     } else {
       res.status(400).json({

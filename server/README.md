@@ -11,3 +11,7 @@ npm run dev
 # TODO:
 
 - Set up supabase to work with prisma
+- deal with high severity vulnerabilities in npm
+- figure out how to enforce types between prisma schemas and functions that us prisma
+- consider installing a logger like journalctl or winston
+- update prisma maybe

@@ -21,9 +21,9 @@ app.get("/api/articles", async (req, res) => {
     if (requestType === "preview" && typeof pageName === "string") {
       // make database request with pageName
       const pageArticles = await getArticleSummary(pageName);
-      res.status(200).json({
-        test: pageArticles,
-      });
+      // TODO grab the first article with requested page name
+      const firstRelArticle = JSON.parse(pageArticles)[0];
+      res.status(200).json(firstRelArticle);
     } else {
       res.status(400).json({
         error: "Invalid request type. Valid request types: preview",

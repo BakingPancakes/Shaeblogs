@@ -7,6 +7,7 @@ type ArticleData = {
   pageName: string;
   date: number;
   thumbnail?: string;
+  content: string;
   summary?: string;
   responseStatus: boolean;
   id: number;
@@ -16,13 +17,7 @@ const props = defineProps({
   pageNames: Array<string>,
 });
 
-const numPages = props.pageNames?.length;
-
-const pageData = ref(
-  Array(numPages).fill({
-    responseStatus: false,
-  }) as ArticleData[],
-);
+const pageData = ref([] as ArticleData[]);
 
 const getPageData = async (pageName: string) => {
   try {
@@ -37,23 +32,32 @@ const getPageData = async (pageName: string) => {
 
     const data = await res.json();
 
-    console.log("data:", data);
+    console.log("Article preview data:", data);
 
-    // pageData.value[index].title = data.title;
+    const newArticle: ArticleData = {
+      id: data.id,
+      title: data.title,
+      pageName: data.page,
+      responseStatus: true,
+      date: data.date,
+      content: data.content,
+      summary: data.summary,
+    };
 
-    // pageData.value[index].responseStatus = true;
+    pageData.value.push(newArticle);
   } catch (error) {
     console.log(error);
-    // pageData.value[index].responseStatus = false;
   }
 };
 
 props.pageNames?.forEach((pageName) => getPageData(pageName));
+console.log(pageData.value);
 </script>
 
 <template>
   <div class="preview" v-for="page in pageData" :key="page.id">
     <h1>{{ page.title ?? "no title" }}</h1>
+    <h2>{{ page.date }}</h2>
     <p>{{ page.thumbnail ?? "no image" }}</p>
     <p>{{ page.summary ?? "no summary" }}</p>
   </div>

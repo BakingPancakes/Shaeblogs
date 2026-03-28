@@ -7,7 +7,7 @@ const pagesImplemented = ["Flics", "Sips"];
  * Pages supported: Flics, Sips
  * @param pageName
  */
-export const getArticleSummary = async (pageName: string) => {
+export const getArticleSummary = async (pageName: string): Promise<string> => {
   if (!pagesImplemented.includes(pageName)) {
     throw new Error("Unupported page, only `Flics` and `Sips` are supported");
   }

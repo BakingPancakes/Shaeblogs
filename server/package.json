@@ -12,7 +12,7 @@
     "watch": [
       "src"
     ],
-    "exec": "tsc && node ./dist/src/main.js",
+    "exec": "tsc && node ./dist/main.js",
     "ext": "ts"
   },
   "dependencies": {

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { prisma } from "../prisma.ts";
+import { createUUID } from "../utils/utils.js";
 
 // const articleTest: {
 //     page: string;
@@ -11,10 +12,10 @@ import { prisma } from "../prisma.ts";
 //     summary: string;
 // }
 
-const articleTest = () =>
+const createSipsArticle = () =>
   prisma.article.create({
     data: {
-      id: 211,
+      id: createUUID(),
       page: "Sips",
       title: "New Creations: Getting Wild",
       thumbnail: null,
@@ -27,3 +28,17 @@ const articleTest = () =>
   });
 
 // console.log(articleTest);
+
+const createFlicsArticle = () => {
+  prisma.article.create({
+    data: {
+      id: createUUID(),
+      page: "Flics",
+      title: "Super cute photos",
+      thumbnail: null,
+      date: new Date(), // change this to some other format
+      content: "blah blah cute images", //TODO do some research on how to encode an article's contents
+      summary: "cute images summary!",
+    },
+  });
+};

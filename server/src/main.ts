@@ -1,6 +1,6 @@
 import express from "express";
-// import { ArticleData } from "../../client/types";
-import { getArticleSummary } from "./prismaCalls.js";
+import type { article } from "generated/prisma/index.js";
+import { getArticleSummary } from "./databaseAPI.js";
 
 const PORT = process.env.API_PORT || 3001;
 
@@ -19,10 +19,10 @@ app.get("/api/articles", async (req, res) => {
     const requestType = req.query.requestType;
     const pageName = req.query.pageName;
     if (requestType === "preview" && typeof pageName === "string") {
-      // make database request with pageName
-      const pageArticles = await getArticleSummary(pageName);
-      // TODO grab the first article with requested page name
-      const firstRelArticle = JSON.parse(pageArticles)[0];
+      const pageArticles: article[] = await getArticleSummary(pageName);
+      const firstRelArticle = pageArticles.filter(
+        (article) => article.page === pageName,
+      )[0];
       res.status(200).json(firstRelArticle);
     } else {
       res.status(400).json({

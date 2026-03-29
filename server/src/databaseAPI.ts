@@ -1,4 +1,5 @@
-import { prisma } from "./prisma.js";
+import { article } from "generated/prisma/index.js";
+import { prisma } from "../prisma/prisma.js";
 
 const pagesImplemented = ["Flics", "Sips"];
 
@@ -7,7 +8,9 @@ const pagesImplemented = ["Flics", "Sips"];
  * Pages supported: Flics, Sips
  * @param pageName
  */
-export const getArticleSummary = async (pageName: string): Promise<string> => {
+export const getArticleSummary = async (
+  pageName: string,
+): Promise<article[]> => {
   if (!pagesImplemented.includes(pageName)) {
     throw new Error("Unupported page, only `Flics` and `Sips` are supported");
   }
@@ -15,5 +18,5 @@ export const getArticleSummary = async (pageName: string): Promise<string> => {
   const data = await prisma.article.findMany({
     where: { page: pageName },
   });
-  return JSON.stringify(data);
+  return data;
 };

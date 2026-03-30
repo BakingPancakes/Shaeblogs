@@ -1,22 +1,18 @@
-import { article } from "generated/prisma/index.js";
-import { prisma } from "../prisma/prisma.js";
-
-const pagesImplemented = ["Flics", "Sips"];
+import { prisma } from "./prisma/db.js";
+import type { article, Page } from "../../shared/generated/prisma/index.js";
 
 /**
- * Requests all of the records (articles) under the page provided.
- * Pages supported: Flics, Sips
+ * Requests all of the article records under the page provided.
  * @param pageName
  */
-export const getArticleSummary = async (
-  pageName: string,
-): Promise<article[]> => {
-  if (!pagesImplemented.includes(pageName)) {
-    throw new Error("Unupported page, only `Flics` and `Sips` are supported");
-  }
-
+export const getArticlesByPage = async (pageName: Page): Promise<article[]> => {
   const data = await prisma.article.findMany({
+    // eventually this should be the following:
+    // where: { page: pageName, publishedAt: { not: null } },
+    // orderBy: { publishedAt: "desc" },
     where: { page: pageName },
+    orderBy: { createdAt: "desc" },
   });
+  console.log("databaseapi data: ", data);
   return data;
 };

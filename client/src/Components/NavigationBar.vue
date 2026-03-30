@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { THEME } from "@/constants";
+import { THEME } from "@src/constants";
 
 type tabList = {
   tag: string;

@@ -1,25 +1,29 @@
 <script setup lang="ts">
-import { THEME } from "@/constants";
-import { ref } from "vue";
-import type { article } from "../../../server/generated/prisma/client.js";
-import { getPageData } from "@/api/pagesCalls";
+import { EMPTY_ARTICLE, PAGES_SUPPORTED, THEME } from "@src/constants";
+import type { article } from "@shared/generated/prisma/client.js";
+import { getPageArticlesRecent } from "@src/api/pagesCalls";
+import { onMounted, ref } from "vue";
 
-const props = defineProps({
-  pageNames: {
-    type: Array<string>,
-    required: true,
-  },
+const omittedPages = ["SIGHTS"];
+const pages = PAGES_SUPPORTED.filter((page) => !omittedPages.includes(page));
+
+const mostRecentArticlePerPage = ref([] as article[]);
+
+onMounted(async () => {
+  for (const pageName of pages) {
+    const temp = [] as article[];
+    await getPageArticlesRecent(temp, pageName, 1);
+    console.log("temp:", temp);
+    mostRecentArticlePerPage.value.push(temp[0] || EMPTY_ARTICLE);
+  }
+  console.log("final:", mostRecentArticlePerPage.value);
 });
-
-const pageData = ref([] as article[]);
-
-props.pageNames?.forEach((pageName) => getPageData(pageData, pageName));
 </script>
 
 <template>
-  <div class="preview" v-for="page in pageData" :key="page.id">
+  <div class="preview" v-for="page in mostRecentArticlePerPage" :key="page.id">
     <h1>{{ page.title ?? "no title" }}</h1>
-    <h2>{{ page.date }}</h2>
+    <h2>{{ page.publishedAt ?? "no publication date" }}</h2>
     <p :v-if="page.thumbnail === undefined">{{ page.thumbnail ?? "no image" }}</p>
     <p>{{ page.summary ?? "no summary" }}</p>
   </div>

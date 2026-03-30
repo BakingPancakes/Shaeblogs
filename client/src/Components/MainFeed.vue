@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import ArticlePreview from "./ArticlePreview.vue";
 import AsyncTest from "./AsyncTest.vue";
-import { THEME } from "@/constants";
-
-const pageNames = ["Sips", "Flics"];
+import { THEME } from "@src/constants";
 </script>
 
 <template>
   <div id="feed_container">
     <h1>What's new:</h1>
-    <ArticlePreview :page-names="pageNames" />
+    <ArticlePreview />
   </div>
   <AsyncTest />
 </template>

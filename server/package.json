@@ -6,13 +6,15 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "build": "tsc && node ./dist/src/main.js"
   },
   "nodemonConfig": {
     "watch": [
-      "src"
+      "src",
+      "../shared"
     ],
-    "exec": "tsc && node ./dist/main.js",
+    "exec": "tsx src/main.ts",
     "ext": "ts"
   },
   "dependencies": {
@@ -29,6 +31,7 @@
     "dotenv": "^17.3.1",
     "nodemon": "^3.1.14",
     "prisma": "^7.5.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }

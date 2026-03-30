@@ -1,4 +1,4 @@
-import { prisma } from "../../prisma/prisma.ts";
+import { prisma } from "prisma/prisma.ts";
 
 const sipsTest1 = {
   page: "SIPS",

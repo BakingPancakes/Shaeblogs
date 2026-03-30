@@ -13,7 +13,7 @@
 generator client {
   // prisma-client is unstable in v 6, so using an older provider
   provider = "prisma-client-js"
-  output   = "../dist/generated/prisma"
+  output   = "../../shared/generated/prisma"
 }
 
 datasource db {

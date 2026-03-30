@@ -26,5 +26,8 @@
     "globals": "^17.4.0",
     "jiti": "^2.6.1",
     "typescript-eslint": "^8.57.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.6.0"
   }
 }

@@ -4,6 +4,12 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// Run for migrations:
+//  npx prisma migrate dev --name [name]
+
+// Then run to restart prisma server:
+//  npx prisma generate
+
 generator client {
   // prisma-client is unstable in v 6, so using an older provider
   provider = "prisma-client-js"
@@ -17,12 +23,22 @@ datasource db {
   // directUrl = env("DIRECT_URL")
 }
 
+enum Page {
+  SIPS // cafe reviews
+  FLICS // image gallery
+  SIGHTS // area reviews
+}
+
 model article {
-  id Int @id
-  page String
+  id String @id @default(cuid())
+  page Page
   title String @unique
-  thumbnail String?
-  date Int
-  content String
-  summary String
+  thumbnail String? // store a url, not the image itself
+  createdAt DateTime @default(now())
+  publishedAt DateTime? // for if a draft is saved before publishing
+  updatedAt DateTime?
+  content String // stored as Markdown
+  summary String?
+  @@index([publishedAt])
+  @@index([page])
 }

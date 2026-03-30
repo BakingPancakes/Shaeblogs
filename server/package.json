@@ -7,7 +7,10 @@
   "private": true,
   "scripts": {
     "dev": "nodemon",
-    "build": "tsc && node ./dist/src/main.js"
+    "build": "tsc -p tsconfig.json && node ./dist/main.js",
+    "start": "npx pm2 start ./dist/main.js --name ExpressJS",
+    "stop": "npx pm2 stop ExpressJS",
+    "list": "npx pm2 ls"
   },
   "nodemonConfig": {
     "watch": [
@@ -21,7 +24,8 @@
     "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
     "express": "^5.2.1",
-    "pg": "^8.20.0"
+    "pg": "^8.20.0",
+    "pm2": "^6.0.14"
   },
   "devDependencies": {
     "@dotenvx/dotenvx": "^1.57.2",

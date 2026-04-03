@@ -8,13 +8,17 @@ Given that the server automatically pulls from any new builds, it's advised to s
 
 I think the only reason I used npm init in the root directory was so I could use eslint??
 
-## Todos
+## Dev Todos
 
 - Configure prettier + figure out how it works
-- Set up PostgreSQL with Prism
 - Set up Lucia Auths
 - set up huksy + lint-staged to block un-linted commits
-- date is created on client side when shaebae submits an articel
+- date is created on client side when shaebae submits an article
+
+## UI Todos
+
+- Add routes for each page
+- Create a template for each page
 
 # Project Setup
 

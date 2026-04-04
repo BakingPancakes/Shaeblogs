@@ -20,6 +20,7 @@ export default defineConfig({
     alias: {
       "@src": fileURLToPath(new URL("./src", import.meta.url)),
       "@shared": fileURLToPath(new URL("./../shared/*", import.meta.url)),
+      "@components": fileURLToPath(new URL("./src/Components/", import.meta.url)),
     },
   },
   server: {

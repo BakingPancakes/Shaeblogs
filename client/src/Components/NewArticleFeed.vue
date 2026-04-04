@@ -21,11 +21,14 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="preview" v-for="page in mostRecentArticlePerPage" :key="page.id">
-    <h1>{{ page.title ?? "no title" }}</h1>
-    <h2>{{ page.publishedAt ?? "no publication date" }}</h2>
-    <p :v-if="page.thumbnail === undefined">{{ page.thumbnail ?? "no image" }}</p>
-    <p>{{ page.summary ?? "no summary" }}</p>
+  <div v-for="article in mostRecentArticlePerPage" :key="article.id">
+    <RouterLink :to="article.page.toLocaleLowerCase()">{{ article.page }}</RouterLink>
+    <div class="preview">
+      <h1>{{ article.title ?? "no title" }}</h1>
+      <h2>{{ article.publishedAt ?? "no publication date" }}</h2>
+      <p :v-if="article.thumbnail === undefined">{{ article.thumbnail ?? "no image" }}</p>
+      <p>{{ article.summary ?? "no summary" }}</p>
+    </div>
   </div>
 </template>
 

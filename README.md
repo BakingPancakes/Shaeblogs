@@ -17,8 +17,13 @@ I think the only reason I used npm init in the root directory was so I could use
 
 ## UI Todos
 
-- Add routes for each page
 - Create a template for each page
+- figure out how to make side-bar appear once moving from home page
+- figure out how to request and store images (for article thumbnails)
+- add 404 page
+- update Page schema to include friends + eats, remove sights
+- update article schema to include comments
+- cache any recently loaded articles to the browser + load them if possible (set a threshold of course)
 
 # Project Setup
 

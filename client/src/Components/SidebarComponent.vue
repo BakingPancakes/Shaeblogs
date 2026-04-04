@@ -11,5 +11,6 @@ const showSidebar = computed(() => pages.includes(route.path));
 <template>
   <template v-if="showSidebar">
     <div>sidebar</div>
+    <RouterLink to="/">back</RouterLink>
   </template>
 </template>

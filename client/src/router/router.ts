@@ -11,7 +11,7 @@ const router = createRouter({
     ...topicRoutes,
     { path: "/:topic/:articleid", components: ArticleView },
     { path: "/./:pathMatch(.*)*", name: "404", component: () => import("./404view.vue") },
-    // above syntax is used for component to allow for variable name to begin with number
+    // above function syntax is used for component to allow for variable name to begin with number
   ],
 });
 

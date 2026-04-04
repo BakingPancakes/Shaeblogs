@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import NewArticleFeed from "./NewArticleFeed.vue";
-import AsyncTestButton from "./AsyncTestButton.vue";
+import RecentArticlesFeed from "./RecentArticlesFeed.vue";
 import { THEME } from "@src/constants";
 </script>
 
 <template>
   <div id="feed_container">
     <h1>Recent updates:</h1>
-    <NewArticleFeed />
+    <RecentArticlesFeed />
   </div>
-  <AsyncTestButton />
 </template>
 
 <style scoped>

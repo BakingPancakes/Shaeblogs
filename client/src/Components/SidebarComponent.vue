@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { useRoute } from "vue-router";
-
-const route = useRoute();
-const pages = ["/eats", "/sips", "/flics", "/friends"];
-
-const showSidebar = computed(() => pages.includes(route.path));
+const topics = ["eats", "sips", "flics", "friends"];
 </script>
 
 <template>
-  <template v-if="showSidebar">
-    <div>sidebar</div>
-    <RouterLink to="/">back</RouterLink>
-  </template>
+  <div id="back-button">
+    <RouterLink to="/">Back to Home</RouterLink>
+  </div>
+  <div v-for="topic in topics" :key="topic">
+    <RouterLink :to="topic">{{ topic.toLocaleUpperCase() }}</RouterLink>
+  </div>
 </template>

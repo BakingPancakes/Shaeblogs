@@ -1,17 +1,42 @@
 import { createWebHistory, createRouter } from "vue-router";
 
-import TopicsView from "@components/TopicsView.vue";
-import ArticleView from "@components/ArticleView.vue";
-import { topicRoutes } from "./topicRoutes";
+import DefaultLayout from "@components/layouts/DefaultLayout.vue";
+import ArticleBrowseLayout from "@components/layouts/ArticleBrowseLayout.vue";
+
+import LandingPageView from "@components/Views/LandingPageView.vue";
+import ArticleSelectionView from "@components/Views/ArticleSeletionView.vue";
+import ArticleReadView from "@components/Views/ArticleReadView.vue";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", component: TopicsView },
-    ...topicRoutes,
-    { path: "/:topic/:articleid", components: ArticleView },
-    { path: "/./:pathMatch(.*)*", name: "404", component: () => import("./404view.vue") },
-    // above function syntax is used for component to allow for variable name to begin with number
+    {
+      path: "/",
+      component: DefaultLayout,
+      children: [
+        { path: "", component: LandingPageView },
+        {
+          path: "topics",
+          component: ArticleBrowseLayout,
+          children: [
+            {
+              path: ":topicID",
+              component: ArticleSelectionView,
+            },
+            {
+              path: ":topicID/articles/:articleID",
+              component: ArticleReadView,
+            },
+          ],
+        },
+        {
+          path: "/:pathMatch(.*)*",
+          name: "NotFound",
+          component: () => import("./404view.vue"),
+          // above function syntax is used for component to allow for variable name to begin with number
+        },
+      ],
+    },
   ],
 });
 

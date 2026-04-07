@@ -1,19 +1,22 @@
 <script startup setup lang="ts">
 import NavigationBar from "@components/NavigationBar.vue";
-import AsyncTestButton from "@components/AsyncTestButton.vue";
-import SidebarComponent from "./Components/SidebarComponent.vue";
 </script>
 
 <template>
-  <NavigationBar />
-  <SidebarComponent />
-  <RouterView />
-  <AsyncTestButton />
-  <footer>Shaeblogs &copy; 2026</footer>
+  <div id="app-shell">
+    <NavigationBar />
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
-footer {
-  text-align: center;
+#app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  /** disable scroll container behavior
+  + clip content that exceeds bounds */
+  overflow: hidden;
 }
 </style>

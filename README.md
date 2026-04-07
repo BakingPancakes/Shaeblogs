@@ -18,6 +18,7 @@ I think the only reason I used npm init in the root directory was so I could use
 ## UI Todos
 
 - Create a template for each page
+- use /topic/:topicID/:articleID instead of /:topicID... since all topic pages should look similar
 - figure out how to make side-bar appear once moving from home page
 - properly implement a theme
 - figure out how to request and store images (for article thumbnails)

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import RecentArticlesFeed from "./RecentArticlesFeed.vue";
+import RecentArticlesFeed from "../RecentArticlesFeed.vue";
 import { THEME } from "@src/constants";
 </script>
 
@@ -14,6 +14,7 @@ import { THEME } from "@src/constants";
 #feed_container {
   background-color: v-bind("THEME.PRIMARY_1");
   margin: 3% auto;
+  margin-top: 7em;
   padding: 5px;
   max-width: 70vw;
   min-height: 50vh;

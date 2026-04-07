@@ -1,5 +1,12 @@
 body {
   background-image: url("/pink_checkered_background.jpg");
+  overflow: hidden;
+}
+
+html,
+body {
+  overscroll-behavior: none;
+  height: 100%;
   margin: 0;
 }
 

@@ -22,7 +22,7 @@ onMounted(async () => {
 
 <template>
   <div v-for="article in mostRecentArticlePerPage" :key="article.id">
-    <RouterLink :to="`/` + article.page.toLocaleLowerCase()">{{ article.page }}</RouterLink>
+    <RouterLink :to="'topics/' + article.page.toLocaleLowerCase()">{{ article.page }}</RouterLink>
     <div class="preview">
       <h1>{{ article.title ?? "no title" }}</h1>
       <h2>{{ article.publishedAt ?? "no publication date" }}</h2>

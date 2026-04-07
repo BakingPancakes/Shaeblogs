@@ -1,3 +1,3 @@
 <template>
-  <p>sips page</p>
+  <div>test</div>
 </template>

@@ -1,22 +1,24 @@
 <script setup lang="ts">
-import { EMPTY_ARTICLE, PAGES_SUPPORTED, THEME } from "@src/constants";
-import type { article } from "@shared/generated/prisma/client.js";
+import { MISSING_ARTICLE_ID, THEME } from "@src/constants";
+import { EMPTY_ARTICLE, SUPPORTED_PAGES } from "./types";
+import type { Article } from "./types";
 import { getPageArticlesRecent } from "@src/api/pagesCalls";
 import { onMounted, ref } from "vue";
 
-const omittedPages = ["SIGHTS"];
-const pages = PAGES_SUPPORTED.filter((page) => !omittedPages.includes(page));
-
-const mostRecentArticlePerPage = ref([] as article[]);
+const mostRecentArticlePerPage = ref([] as Article[]);
 
 onMounted(async () => {
-  for (const pageName of pages) {
-    const temp = [] as article[];
+  for (const pageName of SUPPORTED_PAGES) {
+    const temp = [] as Article[];
     await getPageArticlesRecent(temp, pageName, 1);
-    console.log("temp:", temp);
-    mostRecentArticlePerPage.value.push(temp[0] || EMPTY_ARTICLE);
+    if (temp[0] !== undefined && temp[0].id !== MISSING_ARTICLE_ID) {
+      mostRecentArticlePerPage.value.push(temp[0] || EMPTY_ARTICLE);
+    }
   }
-  console.log("final:", mostRecentArticlePerPage.value);
+  if (mostRecentArticlePerPage.value.every((e) => e.id === MISSING_ARTICLE_ID)) {
+    mostRecentArticlePerPage.value = [EMPTY_ARTICLE];
+  }
+  console.log("Retrieved article data:", mostRecentArticlePerPage.value);
 });
 </script>
 

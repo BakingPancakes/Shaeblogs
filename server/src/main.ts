@@ -1,7 +1,6 @@
 import express from "express";
-import type { article } from "../../shared/generated/prisma/index.js";
-import { Page } from "../../shared/generated/prisma/index.js";
 import { getArticlesByPage } from "./databaseAPI.js";
+import { isPage } from "./types.js";
 
 const PORT = process.env.API_PORT || 3001;
 
@@ -17,12 +16,12 @@ app.get("/api", (_req, res) => {
 
 app.get("/api/articles", async (req, res) => {
   try {
-    const pageName = req.query.pageName;
+    const pageName = req.query.pageName?.toString().toUpperCase();
     if (typeof pageName !== "string") {
       throw new Error("Page name received was somehow not a string.");
     }
     // should throw error if pageName doesn't follow Page convention
-    if (!Object.values(Page).includes(pageName as Page)) {
+    if (!isPage(pageName)) {
       throw new Error(
         `Page requested does not exist ${pageName}. Please refer to prisma schema for valid pages.`,
       );

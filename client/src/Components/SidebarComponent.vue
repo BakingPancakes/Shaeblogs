@@ -5,11 +5,11 @@ import { SUPPORTED_PAGES } from "./types";
 
 <template>
   <div id="sidebar-wrapper">
-    <div id="tab-button" key="back">
-      <RouterLink to="/">Back to Home</RouterLink>
-    </div>
     <div id="tab-button" v-for="topic in SUPPORTED_PAGES" :key="topic">
       <RouterLink :to="topic">{{ topic.toLocaleUpperCase() }}</RouterLink>
+    </div>
+    <div id="tab-button" key="back">
+      <RouterLink to="/">Back to Home</RouterLink>
     </div>
   </div>
 </template>

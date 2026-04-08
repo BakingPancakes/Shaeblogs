@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Article } from "./types";
-import { THEME } from "@src/constants";
 
 const props = defineProps<{
   articleContent: Article;
@@ -15,8 +14,4 @@ const props = defineProps<{
   </div>
 </template>
 
-<style>
-#article-preview {
-  background-color: v-bind("THEME.PRIMIARY_2");
-}
-</style>
+<style></style>

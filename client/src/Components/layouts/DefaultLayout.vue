@@ -2,7 +2,7 @@
   <div id="layout-wrapper">
     <div id="scroll-container">
       <RouterView />
-      <footer>Shaeblogs &copy; 2026</footer>
+      <footer class="p-8">Shaeblogs &copy; 2026</footer>
     </div>
   </div>
 </template>

@@ -1,5 +1,9 @@
 import express from "express";
-import { getArticlesByPage } from "./databaseAPI.js";
+import {
+  getArticleByID,
+  getArticlesByPage,
+  getMostRecentArticle,
+} from "./databaseAPI.js";
 import { isPage } from "./types.js";
 
 const PORT = process.env.API_PORT || 3001;
@@ -16,24 +20,36 @@ app.get("/api", (_req, res) => {
 
 app.get("/api/articles", async (req, res) => {
   try {
+    const articleID = req.query.articleID?.toString();
     const pageName = req.query.pageName?.toString().toUpperCase();
-    if (typeof pageName !== "string") {
-      throw new Error("Page name received was somehow not a string.");
+    // handle pageName
+    if (pageName !== undefined && isPage(pageName)) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      // @ts-ignore
+      const pageArticles: article[] = await getArticlesByPage(pageName);
+      const firstRelArticle = pageArticles.filter(
+        (article) => article.page === pageName,
+      )[0];
+      res.status(200).json(firstRelArticle);
     }
-    // should throw error if pageName doesn't follow Page convention
-    if (!isPage(pageName)) {
+    // handle articleID
+    if (articleID !== undefined) {
+      const article = await getArticleByID(articleID);
+      res.status(200).json(article);
+    } else {
       throw new Error(
-        `Page requested does not exist ${pageName}. Please refer to prisma schema for valid pages.`,
+        "Invalid parameter. Accepted parameters: Page or Article ID",
       );
     }
-    console.log("passed!");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    // @ts-ignore
-    const pageArticles: article[] = await getArticlesByPage(pageName);
-    const firstRelArticle = pageArticles.filter(
-      (article) => article.page === pageName,
-    )[0];
-    res.status(200).json(firstRelArticle);
+  } catch (error) {
+    console.log("Error retrieving article information:", error);
+  }
+});
+
+app.get("/api/articles/mostrecent", async (_req, res) => {
+  try {
+    const data = await getMostRecentArticle();
+    res.status(200).json(data);
   } catch (error) {
     console.log("Error retrieving article information:", error);
   }

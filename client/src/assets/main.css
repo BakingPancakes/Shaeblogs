@@ -1,3 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ffc9c9;
+  --color-secondary: #d0f6fc;
+  --color-tertiary: #9ab297;
+  --color-quarternary: #ffffff;
+  --color-dim: #2d2e2e;
+}
+
 body {
   background-image: url("/pink_checkered_background.jpg");
   overflow: hidden;

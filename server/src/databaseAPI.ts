@@ -7,12 +7,31 @@ import type { Article, Page } from "./types.js";
  */
 export const getArticlesByPage = async (pageName: Page): Promise<Article[]> => {
   const data = await prisma.article.findMany({
-    // eventually this should be the following:
-    // where: { page: pageName, publishedAt: { not: null } },
-    // orderBy: { publishedAt: "desc" },
-    where: { page: pageName },
-    orderBy: { createdAt: "desc" },
+    where: { page: pageName, publishedAt: { not: null } },
+    orderBy: { publishedAt: "desc" },
   });
   console.log("databaseapi data: ", data);
+  return data;
+};
+
+export const getArticleByID = async (articleID: string): Promise<Article> => {
+  const data = await prisma.article.findUnique({
+    where: { id: articleID },
+  });
+  if (data == null) {
+    throw new Error("Failed to retrieve article data by ID. Returned null.");
+  }
+  return data;
+};
+
+export const getMostRecentArticle = async (): Promise<Article> => {
+  const data = await prisma.article.findFirst({
+    where: { publishedAt: { not: null } },
+    orderBy: { publishedAt: "desc" },
+  });
+  if (data === null) {
+    throw new Error("Failed to retrieve article data. Returned null.");
+  }
+  console.log("Most recent article retreieved:", data);
   return data;
 };

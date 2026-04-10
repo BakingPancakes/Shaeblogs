@@ -1,14 +1,27 @@
 <script setup lang="ts">
 import { THEME } from "@src/constants";
-import { SUPPORTED_PAGES } from "./types";
+import { SUPPORTED_PAGES, type Page } from "./types";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+// const isHomePage = !route.path.includes("/topics/");
+// const isSelectionPage = route.path.slice(-1) === pageName;
+// if (isHomePage) return `topics/${pageName}`;
+// if (isSelectionPage) return pageName;
+const handleTabClick = (topic: Page) => router.push(`/topics/${topic}`);
 </script>
 
 <template>
   <div id="sidebar-wrapper">
-    <div id="tab-button" v-for="topic in SUPPORTED_PAGES" :key="topic">
-      <RouterLink :to="topic">{{ topic.toLocaleUpperCase() }}</RouterLink>
+    <div
+      class="tab-button"
+      v-for="page in SUPPORTED_PAGES"
+      :key="page"
+      @click="handleTabClick(page)"
+    >
+      {{ page.toUpperCase() }}
     </div>
-    <div id="tab-button" key="back">
+    <div class="tab-button">
       <RouterLink to="/">Back to Home</RouterLink>
     </div>
   </div>
@@ -16,14 +29,14 @@ import { SUPPORTED_PAGES } from "./types";
 
 <style>
 #sidebar-wrapper {
-  position: fixed;
   background-color: v-bind("THEME.PRIMARY_1");
   border-top-right-radius: 28px;
   border-bottom-right-radius: 28px;
   margin-top: 60px;
+  max-width: 120px;
 }
 
-#tab-button {
+.tab-button {
   padding: 1em;
   text-align: center;
 }

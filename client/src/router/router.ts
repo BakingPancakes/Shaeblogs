@@ -24,7 +24,7 @@ const router = createRouter({
               component: ArticleSelectionView,
             },
             {
-              path: ":topicID/articles/:articleID",
+              path: ":topicID/:articleID",
               component: ArticleReadView,
             },
           ],

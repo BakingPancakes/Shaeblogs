@@ -13,7 +13,7 @@
 generator client {
   // prisma-client is unstable in v 6, so using an older provider
   provider = "prisma-client-js"
-  output   = "../../shared/generated/prisma"
+  output   = "../../../shared/generated/prisma"
 }
 
 datasource db {
@@ -26,7 +26,8 @@ datasource db {
 enum Page {
   SIPS // cafe reviews
   FLICS // image gallery
-  SIGHTS // area reviews
+  FRIENDS // fun things with friends
+  EATS // restaurant reviews
 }
 
 model article {

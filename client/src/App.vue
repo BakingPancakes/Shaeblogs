@@ -1,16 +1,22 @@
 <script startup setup lang="ts">
-import MainFeed from "./Components/MainFeed.vue";
-import NavigationBar from "./Components/NavigationBar.vue";
+import NavigationBar from "@components/NavigationBar.vue";
 </script>
 
 <template>
-  <NavigationBar />
-  <MainFeed />
-  <footer>Shaeblogs &copy; 2026</footer>
+  <div id="app-shell">
+    <NavigationBar />
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
-footer {
-  text-align: center;
+#app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  /** disable scroll container behavior
+  + clip content that exceeds bounds */
+  overflow: hidden;
 }
 </style>

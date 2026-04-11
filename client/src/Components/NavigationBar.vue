@@ -25,7 +25,7 @@ const tab_list: tabList[] = [
 </script>
 
 <template>
-  <div id="header">
+  <div id="navbar-wrapper">
     <div id="tablist">
       <div id="tab" v-for="tab in tab_list" :key="tab.id">
         <img :src="tab.imageURL" style="max-height: 1em" />
@@ -38,13 +38,14 @@ const tab_list: tabList[] = [
 </template>
 
 <style scoped>
-#header {
+#navbar-wrapper {
+  flex: 1 1 80px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-around;
   align-items: center;
   margin: 0;
-  height: 5em;
+  width: 100vw;
   background-color: v-bind("THEME.PRIMARY_1");
 }
 

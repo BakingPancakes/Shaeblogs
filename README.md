@@ -17,8 +17,14 @@ I think the only reason I used npm init in the root directory was so I could use
 
 ## UI Todos
 
-- Add routes for each page
-- Create a template for each page
+- create an error check when frontend Page type and prisma schema Page types are different
+- maybe research typical methods for sharing some features between a client and server
+- properly implement a theme
+- wrap articles in article selection page as deferred content (lazy loading)
+- figure out how to request and store images (for article thumbnails)
+- update article schema to include comments
+- cache any recently loaded articles to the browser + load them if possible (set a threshold of course)
+- style 404 page
 
 # Project Setup
 

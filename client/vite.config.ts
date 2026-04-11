@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import vueDevTools from "vite-plugin-vue-devtools";
+import tailwindcss from "@tailwindcss/vite";
 
 const serverURL = new URL(process.env.DEV_SERVER_URL ?? "http://localhost:3001");
 const serverAPIPath = process.env.DEV_SERVER_API_PATH ?? "/api";
@@ -15,11 +16,12 @@ export default defineConfig({
   define: {
     __API_PATH__: JSON.stringify(serverAPIPath),
   },
-  plugins: [vue(), vueJsx(), vueDevTools()],
+  plugins: [vue(), vueJsx(), vueDevTools(), tailwindcss()],
   resolve: {
     alias: {
       "@src": fileURLToPath(new URL("./src", import.meta.url)),
       "@shared": fileURLToPath(new URL("./../shared/*", import.meta.url)),
+      "@components": fileURLToPath(new URL("./src/Components/", import.meta.url)),
     },
   },
   server: {

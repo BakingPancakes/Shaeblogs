@@ -1,4 +1,6 @@
 <template>
-  <p>Sorry, it appears this page doesn't exist, try returning to the home page.</p>
-  <RouterLink to="/">Return to safety!</RouterLink>
+  <div class="h-100 flex flex-col justify-center text-center">
+    <p class="mb-10">Sorry, it appears this page doesn't exist.</p>
+    <RouterLink to="/">Click here to return to safety!</RouterLink>
+  </div>
 </template>

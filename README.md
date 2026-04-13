@@ -48,7 +48,9 @@ cd server && npx prisma generate
 
 ## Run dev servers
 
-The following will start the Vite server in client/ and the Express.js server in server/ using nodemon for hot-updates.
+The following will start the Vite server in client/ and the Express.js server in server/.
+
+client uses vite for hot-updates, and server uses nodemon for hot-updates.
 
 ```sh
 npm run dev
@@ -57,6 +59,8 @@ npm run dev
 ## Create build
 
 The following will create the build files in either client/ or server/. Don't forget to run npx prisma generate in the server folder for prisma schema build files.
+
+Note that changes in either client or server, even if changes appear on dev servers, do not automatically appear in runtime servers until npm run build is called.
 
 ```sh
 npm run build

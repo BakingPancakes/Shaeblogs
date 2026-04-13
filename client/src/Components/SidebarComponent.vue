@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { THEME } from "@src/constants";
 import { SUPPORTED_PAGES, type Page } from "./types";
 import { useRouter } from "vue-router";
 const router = useRouter();
@@ -29,7 +28,8 @@ const handleTabClick = (topic: Page) => router.push(`/topics/${topic}`);
 
 <style>
 #sidebar-wrapper {
-  background-color: v-bind("THEME.PRIMARY_1");
+  position: fixed;
+  background-color: var(--color-primary);
   border-top-right-radius: 28px;
   border-bottom-right-radius: 28px;
   margin-top: 60px;

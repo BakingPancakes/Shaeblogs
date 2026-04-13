@@ -10,8 +10,13 @@ const mostRecentArticle = ref(EMPTY_ARTICLE);
 const mostRecentArticlePerPage = ref([] as Article[]);
 
 onMounted(async () => {
-  mostRecentArticle.value = (await getMostRecentArticle()) ?? ERROR_ARTICLE;
-  console.log("Retrieved article data:", mostRecentArticle.value);
+  const articleData = await getMostRecentArticle();
+  if (articleData === undefined) {
+    mostRecentArticle.value = ERROR_ARTICLE;
+  } else {
+    mostRecentArticle.value = articleData;
+  }
+  console.log("Retrieved most recent article data:", mostRecentArticle.value);
 
   for (const pageName of SUPPORTED_PAGES) {
     const temp = [] as Article[];

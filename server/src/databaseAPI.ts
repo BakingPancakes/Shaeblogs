@@ -30,7 +30,9 @@ export const getMostRecentArticle = async (): Promise<Article> => {
     orderBy: { publishedAt: "desc" },
   });
   if (data === null) {
-    throw new Error("Failed to retrieve article data. Returned null.");
+    throw new Error(
+      "Failed to retrieve most recent article data. Returned null.",
+    );
   }
   console.log("Most recent article retreieved:", data);
   return data;
